@@ -17,10 +17,6 @@ variable "id_rsa" {
   description = "Public ssh key for ec2 instances"
 }
 
-variable "datadog_api_key" {
-  type        = string
-  description = "datadog api key"
-}
 
 
 
