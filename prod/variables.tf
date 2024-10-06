@@ -17,8 +17,16 @@ variable "id_rsa" {
   description = "Public ssh key for ec2 instances"
 }
 
+variable "AWS_ACCESS_KEY_ID" {
+  description = "AWS Access Key ID"
+  type        = string
+}
 
-
+variable "AWS_SECRET_ACCESS_KEY" {
+  description = "AWS Secret Access Key"
+  type        = string
+  sensitive   = true
+}
 
 #####################################
 ### CICD variables
