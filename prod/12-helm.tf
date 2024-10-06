@@ -224,46 +224,7 @@ resource "helm_release" "argocd-apps" {
   depends_on = [helm_release.argocd, module.eks]
 }
 
-# datadog helm chart
-resource "helm_release" "datadog" {
-  name             = "datadog"
-  repository       = "https://helm.datadoghq.com"
-  chart            = "datadog"
-  namespace        = "datadog"
-  version          = "3.53.2"
-  create_namespace = "true"
-  timeout          = 300
-  set {
-    name  = "datadog.apiKey"
-    value = var.datadog_api_key
-  }
-  set {
-    name  = "datadog.appkey"
-    value = var.datadog_application_key
-  }
-  set {
-    name  = "datadog.clusterName"
-    value = module.eks.cluster_name
-  }
-  set {
-    name  = "datadog.site"
-    value = var.datadog_region
-  }
-  set {
-    name  = "datadog.dd_url"
-    value = "https://${var.datadog_region}"
-  }
-  set {
-    name  = "datadog.logs.enabled"
-    value = "true"
-  }
-  set {
-    name  = "datadog.logs.containerCollectAll"
-    value = "true"
-  }
 
-  depends_on = [module.eks]
-}
 
 data "kubernetes_service" "ingress_gateway" {
   metadata {
