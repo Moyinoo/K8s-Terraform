@@ -62,7 +62,7 @@ resource "aws_instance" "bastion_host" {
 # Get Latest ubuntu 20.04 image
 data "aws_ami" "latest-ubuntu" {
   most_recent = true
-  owners = ["099720109477"] # Canonical account id
+  owners = ["195275634034"] # Canonical account id
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
