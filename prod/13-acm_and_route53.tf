@@ -32,7 +32,7 @@ resource "aws_route53_record" "eks_domain_cert_validation_dns" {
 # ACM domain certificate for tag_env + base.domain
 resource "aws_acm_certificate" "eks_domain_cert" {
   domain_name               = "${var.tag_env}.${var.base_domain}"
-  subject_alternative_names = ["*.${var.tag_env}.${var.base_domain}}"]
+  subject_alternative_names = ["*.${var.tag_env}.${var.base_domain}"]
   validation_method         = "DNS"
 
   tags = {
