@@ -2,30 +2,6 @@
 ### HELM RELEASES
 #####################################
 
-# helm chart for amazon lambda controller
-resource "helm_release" "ack-lambda" {
-  name             = "ack-lambda"
-  repository       = "oci://public.ecr.aws/aws-controllers-k8s"
-  version          = "1.4.0"
-  chart            = "lambda-chart"
-  namespace        = "ack-lambda"
-  create_namespace = "true"
-  timeout          = 600
-
-  set {
-    name  = "aws.region"
-    value = var.aws_region
-    type  = "string"
-  }
-
-  set {
-    name  = "defaultResyncPeriod"
-    value = "0"
-    type  = "string"
-  }
-
-  depends_on = [module.eks]
-}
 
 resource "helm_release" "crd-helm-chart" {
   name             = "crd-helm-chart"
@@ -53,7 +29,7 @@ resource "helm_release" "crd-helm-chart" {
     type  = "string"
   }
   
-  depends_on = [helm_release.actions-runner-controller, helm_release.ack-lambda, module.eks]
+  depends_on = [helm_release.actions-runner-controller, module.eks]
 }
 
 # helm chart cert-manager requirments for actions runner contoller
