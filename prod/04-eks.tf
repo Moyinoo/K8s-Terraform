@@ -6,7 +6,7 @@ module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
   cluster_name                    = "eks-${var.tag_env}"
   version                         = "20.2.1"
-  cluster_version                 = "1.29"
+  cluster_version                 = "1.30"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
   vpc_id                          = module.vpc.vpc_id
