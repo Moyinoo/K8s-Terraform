@@ -8,5 +8,5 @@ datadog_api_key         = ""
 datadog_application_key = ""
 
 registrationToken       = ""
-ci_project_repo         = ""
-cd_project_repo         = ""
+ci_project_repo         = "Moyinoo/K8s-CI"
+cd_project_repo         = "Moyinoo/K8s-CD"
